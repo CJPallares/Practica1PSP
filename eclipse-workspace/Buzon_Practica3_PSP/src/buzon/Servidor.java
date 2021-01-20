@@ -1,5 +1,12 @@
 package buzon;
-
+/**
+ * Clase Servidor que hace uso de un bucle infinito para mantenerse aceptando peticiones entrantes. 
+ * Cuando una petición de un cliente llega, el servidor le asigna al cliente un nuevo hilo para manejar la parte
+ * de la comunicación. Invoca el método start
+ * @author: Carlos Jiménez
+ * @version: 19/01/2021/D
+ *
+ */
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,7 +20,7 @@ public class Servidor {
 
 	public static void main(String[] args) {
 		try {
-			HashMap<String, ArrayList<String>> buzon = new HashMap<>();
+			HashMap<String,String> buzon = new HashMap<>();
 
 			System.out.println("Creando el socket servidor");
 			// El servidor está escuchando en el puerto 1234

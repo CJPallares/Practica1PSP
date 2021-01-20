@@ -1,5 +1,10 @@
 package buzon;
-
+/**
+ * Clase Cliente. Se establece la conexión con el Socket y la comunicación mediante streams.
+ * @author: Carlos Jiménez
+ * @version: 19/01/2021/D
+ *
+ */
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

@@ -1,21 +1,26 @@
 package buzon;
-
+/**
+ * Clase GestionCliente que maneja a cada cliente que se conecta con un socket específico para cada uno,
+ * de ahí la potencia del multicliente en la implementación que nos permite Java de forma sencilla mediante Threads.
+ * Contiene el método run() necesario para realizar la ejecución multihilo.
+ * @author: Carlos Jiménez
+ * @version: 19/01/2021/D
+ *
+ */
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class GestionCliente extends Thread {
 	private final DataInputStream dis;
 	private final DataOutputStream dos;
 	private final Socket s;
-	private String usuario;
-	Map<String, ArrayList<String>> buzon;
+	Map<String, String> buzon;
 
 	// Constructor
-	public GestionCliente(Socket s, DataInputStream dis, DataOutputStream dos, Map<String, ArrayList<String>> buzon) {
+	public GestionCliente(Socket s, DataInputStream dis, DataOutputStream dos, Map<String, String> buzon) {
 		this.s = s;
 		this.dis = dis;
 		this.dos = dos;
@@ -27,14 +32,15 @@ public class GestionCliente extends Thread {
 		boolean salir = false;
 		String recibeDeCliente;
 		String aDevolverCliente;
-		ArrayList<String> arrMensaje = null;
+		String usuario;
+
 		try {
+			// envía mensaje al cliente
 			dos.writeUTF("Bienvenido, ¿cuál es tu nombre?");
-			this.usuario = this.dis.readUTF();
-			dos.writeUTF("Soy " + this.usuario + "\n");
+			// lee lo que le responde el cliente
+			usuario = this.dis.readUTF();
+			dos.writeUTF("Soy " + usuario + "\n");
 			dos.flush();
-			
-			
 
 			while (!salir) {
 				String opciones = "Elija una de estas opciones: \n 1.Consultar mensajes \n 2.Escribir mensaje \n 3.Salir ";
@@ -44,15 +50,14 @@ public class GestionCliente extends Thread {
 				switch (recibeDeCliente) {
 
 				case "1":
-					arrMensaje = buzon.get(usuario);
-					if (arrMensaje == null) {
+					if ((!buzon.containsKey(usuario)) || (buzon.get(usuario) == null)) {
 						aDevolverCliente = "No se encontraron mensajes \n";
 						dos.writeUTF(aDevolverCliente);
+						
 					} else {
-						for (int i = 0; i < arrMensaje.size(); i++) {
-							dos.writeUTF(arrMensaje.get(i));
-							dos.flush();
-						}
+						dos.writeUTF(buzon.get(usuario));
+						dos.flush();
+						//borramos los campos clave(usuario)-valor(mensaje) ya que el usuario ya ha recibido sus mensajes y no hay persistencia de datos en nuestro programa
 						buzon.remove(usuario);
 					}
 					break;
@@ -64,13 +69,12 @@ public class GestionCliente extends Thread {
 
 					aDevolverCliente = "Escriba el mensaje que desea enviar.";
 					dos.writeUTF(aDevolverCliente);
+					// leemos el input enviado por el cliente
 					String mensaje = dis.readUTF();
 
 					mensaje += " | Remitente: " + usuario;
-
-					arrMensaje.add(mensaje);
-					System.out.println(mensaje);
-					buzon.put(destinatario, arrMensaje);
+					buzon.put(destinatario, mensaje);
+					
 					aDevolverCliente = "Mensaje enviado \n";
 					dos.writeUTF(aDevolverCliente);
 					break;
