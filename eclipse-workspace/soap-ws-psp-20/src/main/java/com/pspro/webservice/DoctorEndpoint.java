@@ -42,7 +42,7 @@ public class DoctorEndpoint
         return response;
     }
     // Método que recibe la información de una petición de tipo DoctorColegiadoRequest y devolverá como respuesta
-    // la información del objeto Doctor cuyo número de colegiado coincida con el que se encuentre en el Map.
+    // el número de colegiado del doctor cuyo nombre coincida con el que se encuentre en el Map.
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "DoctorColegiadoRequest")
     @ResponsePayload
     public DoctorColegiadoResponse getDoctor(@RequestPayload DoctorColegiadoRequest request) {
