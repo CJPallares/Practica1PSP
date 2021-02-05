@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Especialidad" type="{http://www.pspro.com/xml/consulta}Especialidad"/>
+ *         &lt;element name="nColegiado" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "especialidad"
+    "nColegiado"
 })
-@XmlRootElement(name = "EspecialidadDetailsResponse")
-public class EspecialidadDetailsResponse {
+@XmlRootElement(name = "DoctorColegiadoResponse")
+public class DoctorColegiadoResponse {
 
-    @XmlElement(name = "Especialidad", required = true)
-    protected Especialidad especialidad;
+    @XmlElement(required = true)
+    protected String nColegiado;
 
     /**
-     * Obtiene el valor de la propiedad especialidad.
+     * Obtiene el valor de la propiedad nColegiado.
      * 
      * @return
      *     possible object is
-     *     {@link Especialidad }
+     *     {@link String }
      *     
      */
-    public Especialidad getEspecialidad() {
-        return especialidad;
+    public String getNColegiado() {
+        return nColegiado;
     }
 
     /**
-     * Define el valor de la propiedad especialidad.
+     * Define el valor de la propiedad nColegiado.
      * 
      * @param value
      *     allowed object is
-     *     {@link Especialidad }
+     *     {@link String }
      *     
      */
-    public void setEspecialidad(Especialidad value) {
-        this.especialidad = value;
+    public void setNColegiado(String value) {
+        this.nColegiado = value;
     }
 
 }

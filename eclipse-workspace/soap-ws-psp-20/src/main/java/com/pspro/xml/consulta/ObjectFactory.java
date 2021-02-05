@@ -2,16 +2,13 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.02.05 a las 01:50:34 AM CET 
+// Generado el: 2021.02.05 a las 03:31:45 PM CET 
 //
 
 
 package com.pspro.xml.consulta;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -31,29 +28,12 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Xxx_QNAME = new QName("http://www.pspro.com/xml/consulta", "xxx");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.pspro.xml.consulta
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link DoctorEspecialidadResponse }
-     * 
-     */
-    public DoctorEspecialidadResponse createDoctorEspecialidadResponse() {
-        return new DoctorEspecialidadResponse();
-    }
-
-    /**
-     * Create an instance of {@link Doctor }
-     * 
-     */
-    public Doctor createDoctor() {
-        return new Doctor();
     }
 
     /**
@@ -73,27 +53,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DoctorNameRequest }
+     * Create an instance of {@link DoctorDetailsResponse }
      * 
      */
-    public DoctorNameRequest createDoctorNameRequest() {
-        return new DoctorNameRequest();
+    public DoctorDetailsResponse createDoctorDetailsResponse() {
+        return new DoctorDetailsResponse();
     }
 
     /**
-     * Create an instance of {@link DoctorNameResponse }
+     * Create an instance of {@link Doctor }
      * 
      */
-    public DoctorNameResponse createDoctorNameResponse() {
-        return new DoctorNameResponse();
+    public Doctor createDoctor() {
+        return new Doctor();
     }
 
     /**
-     * Create an instance of {@link DoctorName }
+     * Create an instance of {@link DoctorColegiadoRequest }
      * 
      */
-    public DoctorName createDoctorName() {
-        return new DoctorName();
+    public DoctorColegiadoRequest createDoctorColegiadoRequest() {
+        return new DoctorColegiadoRequest();
     }
 
     /**
@@ -105,20 +85,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DoctorEspecialidadRequest }
+     * Create an instance of {@link DoctorColegiadoResponse }
      * 
      */
-    public DoctorEspecialidadRequest createDoctorEspecialidadRequest() {
-        return new DoctorEspecialidadRequest();
+    public DoctorColegiadoResponse createDoctorColegiadoResponse() {
+        return new DoctorColegiadoResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link DoctorDetailsRequest }
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pspro.com/xml/consulta", name = "xxx")
-    public JAXBElement<String> createXxx(String value) {
-        return new JAXBElement<String>(_Xxx_QNAME, String.class, null, value);
+    public DoctorDetailsRequest createDoctorDetailsRequest() {
+        return new DoctorDetailsRequest();
     }
 
 }

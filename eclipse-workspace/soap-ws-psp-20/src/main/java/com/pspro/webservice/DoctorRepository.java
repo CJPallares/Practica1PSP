@@ -1,5 +1,11 @@
 package com.pspro.webservice;
-
+/**
+ * Clase que nos permitirá consultar la información del Doctor. Actúa como una base de datos. 
+ * Aquí sería el sitio donde engancharíamos JPA en un servicio web real.
+ * @author: Carlos Jiménez
+ * @version: 5/02/2021/C
+ *
+ */
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -10,7 +16,8 @@ import com.pspro.xml.consulta.Doctor;
 @Component
 public class DoctorRepository {
     private static final Map<String, Doctor> doctores = new HashMap<>();
- 
+    
+    // Funciona como si fueran consultas a la base de datos.
     @PostConstruct
     public void initData() {
          
@@ -18,8 +25,8 @@ public class DoctorRepository {
         doctor.setFirstname("Antonio");
         doctor.setLastname("Amado");
         doctor.setEdad(54);
-        doctor.setDni("30226951A");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Traumatólogo"));
+        doctor.setNColegiado("302269515");
+        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Neurología"));
         
         doctores.put(doctor.getFirstname(), doctor);
          
@@ -27,32 +34,32 @@ public class DoctorRepository {
         doctor.setFirstname("Luis");
         doctor.setLastname("Encinas");
         doctor.setEdad(45);
-        doctor.setDni("30226958B");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Cirujano"));
- 
+        doctor.setNColegiado("302269586");
+        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Cardiología"));
+
         doctores.put(doctor.getFirstname(), doctor);
          
         doctor = new Doctor();
         doctor.setFirstname("Amaya");
         doctor.setLastname("Colmado");
         doctor.setEdad(40);
-        doctor.setDni("30226967C");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Psiquiatra"));
+        doctor.setNColegiado("302269677");
+        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Psiquiatría"));
         
         doctores.put(doctor.getFirstname(), doctor);
          
         doctor = new Doctor();
-        doctor.setFirstname("Margarita");
+        doctor.setFirstname("Luis");
         doctor.setLastname("Hielo");
         doctor.setEdad(56);
-        doctor.setDni("30226976D");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Neurólogo"));
+        doctor.setNColegiado("302269769");
+        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Traumatología"));
         
         doctores.put(doctor.getFirstname(), doctor);
     }
  
     public Doctor findDoctor(String name) {
-        Assert.notNull(name, "The Doctor's name must not be null");
+        Assert.notNull(name, "El nombre del doctor no debe ser nulo");
         return doctores.get(name);
     }
   

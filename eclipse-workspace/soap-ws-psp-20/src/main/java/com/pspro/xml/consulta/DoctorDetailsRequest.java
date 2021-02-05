@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Especialidad" type="{http://www.pspro.com/xml/consulta}Especialidad"/>
+ *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "especialidad"
+    "firstname"
 })
-@XmlRootElement(name = "EspecialidadDetailsResponse")
-public class EspecialidadDetailsResponse {
+@XmlRootElement(name = "DoctorDetailsRequest")
+public class DoctorDetailsRequest {
 
-    @XmlElement(name = "Especialidad", required = true)
-    protected Especialidad especialidad;
+    @XmlElement(required = true)
+    protected String firstname;
 
     /**
-     * Obtiene el valor de la propiedad especialidad.
+     * Obtiene el valor de la propiedad firstname.
      * 
      * @return
      *     possible object is
-     *     {@link Especialidad }
+     *     {@link String }
      *     
      */
-    public Especialidad getEspecialidad() {
-        return especialidad;
+    public String getFirstname() {
+        return firstname;
     }
 
     /**
-     * Define el valor de la propiedad especialidad.
+     * Define el valor de la propiedad firstname.
      * 
      * @param value
      *     allowed object is
-     *     {@link Especialidad }
+     *     {@link String }
      *     
      */
-    public void setEspecialidad(Especialidad value) {
-        this.especialidad = value;
+    public void setFirstname(String value) {
+        this.firstname = value;
     }
 
 }
