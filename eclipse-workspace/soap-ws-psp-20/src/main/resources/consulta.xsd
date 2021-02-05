@@ -1,0 +1,90 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.pspro.com/xml/consulta"
+	targetNamespace="http://www.pspro.com/xml/consulta"
+	elementFormDefault="qualified">
+	<!-- Peticion de detalles del Empleado: respuesta. Dvuelve un objeto del 
+		tipo Empleado -->
+	<xs:element name="EspecialidadDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="nombreEspecialidad" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="EspecialidadDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Especialidad" type="tns:Especialidad" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Peticion de detalles del Empleado: respuesta. Devuelve un objeto del 
+		tipo Empleado -->
+
+	<xs:element name="DoctorNameRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="firstname" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DoctorNameResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Doctor" type="tns:DoctorName" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DoctorEspecialidadRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="nombreEspecialidad" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DoctorEspecialidadResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Doctor" type="tns:Doctor" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="DoctorName">
+		<xs:sequence>
+			<xs:element name="firstname" type="xs:string" />
+			<xs:element name="lastname" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="xxx" type="xs:string" />
+
+
+	<xs:complexType name="Doctor">
+		<xs:complexContent>
+			<xs:extension base="tns:DoctorName">
+				<xs:sequence>
+					<xs:element name="Especialidad" type="tns:Especialidad" />
+					<xs:element name="edad" type="xs:int" />
+					<xs:element name="dni" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="Especialidad">
+		<xs:sequence>
+			<xs:element name="nombreEspecialidad" type="xs:string" />
+			<xs:element name="nombreHospital" type="xs:string" />
+			<xs:element name="nConsulta" type="xs:int" />
+
+		</xs:sequence>
+	</xs:complexType>
+
+
+</xs:schema>
