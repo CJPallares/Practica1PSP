@@ -39,8 +39,8 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Petición del cliente del número de colegiado (compuesto de 9 dígitos) del doctor.
-	 El servidor devuelve como respuesta un objeto del tipo Doctor con todos los datos del mismo. -->
+	<!-- Petición del cliente del nombre del doctor.
+	 El servidor devuelve como respuesta el número de colegiado del doctor. -->
 	<xs:element name="DoctorColegiadoRequest">
 		<xs:complexType>
 			<xs:sequence>
