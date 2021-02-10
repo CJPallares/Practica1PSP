@@ -30,7 +30,7 @@ public class HospitalServiceController {
 		Hospital hosp2 = new Hospital();
 		hosp2.setId("2");
 		hosp2.setNombre("Santa Catalina");
-		hosp2.setnHabitaciones(300);
+		hosp2.setnHabitaciones(130);
 		
 		hospRepo.put(hosp2.getId(), hosp2);
 	}
