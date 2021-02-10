@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pspro.rest.model.Hospital;
-
+/**
+ * Clase  encargada de procesar peticiones. Tiene recursos de nivel 1.
+ * @author: Carlos Jiménez
+ * @version: 10/02/2021/B
+ *
+ */
 @RestController
 public class HospitalServiceController {
 	private static Map<String, Hospital> hospRepo = new HashMap<>();

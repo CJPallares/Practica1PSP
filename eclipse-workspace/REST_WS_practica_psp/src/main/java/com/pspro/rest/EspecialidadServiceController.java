@@ -15,7 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pspro.rest.model.Doctor;
 import com.pspro.rest.model.Especialidad;
-
+/**
+ * Clase  encargada de procesar peticiones. Consta de recursos de nivel 1 y 2.
+ * @author: Carlos Jiménez
+ * @version: 10/02/2021/B
+ *
+ */
 @RestController
 public class EspecialidadServiceController {
 	private static Map<String, Especialidad> espRepo = new HashMap<>();
@@ -69,6 +74,8 @@ public class EspecialidadServiceController {
 		return espRepo;
 	}
 
+	// ***** Operaciones CRUD de Especialidades (esp) *****
+	
 	@DeleteMapping("/esp/{idEsp}")
 	public ResponseEntity<Object> delete(@PathVariable("idEsp") String id) {
 		espRepo.remove(id);
@@ -100,7 +107,7 @@ public class EspecialidadServiceController {
 	}
 
 	
-	// ***** CRUD Doctores *****
+	// ***** Operaciones CRUD de Doctores *****
 	
 	
 	@DeleteMapping("/esp/{idEsp}/doctores/{id}")
