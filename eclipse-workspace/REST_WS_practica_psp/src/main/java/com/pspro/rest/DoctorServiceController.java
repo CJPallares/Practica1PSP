@@ -33,25 +33,25 @@ public class DoctorServiceController {
       doc1.setName("Luis Encinas");
       doc1.setEdad(55);
       doc1.setDNI("30259928C");
-	  doc1.setDepartamento(EspecialidadServiceController.getMapEspecialidades().get("Cirujano"));
+	  doc1.setDepartamento(EspecialidadServiceController.getMapEspecialidades().get("1"));
 	  
       doctorRepo.put(doc1.getId(), doc1);
       
       Doctor doc2 = new Doctor();
       doc2.setId("2");
       doc2.setName("Antonio Rozas");
-      doc2.setEdad(55);
+      doc2.setEdad(58);
       doc2.setDNI("30259979A");
-	  doc2.setDepartamento(EspecialidadServiceController.getMapEspecialidades().get("Anestesista"));
+	  doc2.setDepartamento(EspecialidadServiceController.getMapEspecialidades().get("2"));
 
       doctorRepo.put(doc2.getId(), doc2);
       
       Doctor doc3 = new Doctor();
       doc3.setId("3");
       doc3.setName("Amaya Espina");
-      doc3.setEdad(55);
+      doc3.setEdad(60);
       doc3.setDNI("20259826D");
-	  doc3.setDepartamento(EspecialidadServiceController.getMapEspecialidades().get("Cirujano"));
+	  doc3.setDepartamento(EspecialidadServiceController.getMapEspecialidades().get("1"));
 
       doctorRepo.put(doc3.getId(), doc3);
    }
