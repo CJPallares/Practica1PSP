@@ -70,13 +70,9 @@ public class EspecialidadServiceController {
 
 		doctorRepo.put(doc3.getId(), doc3);
 	}
+	
 
-	//No se usa finalmente aquí
-	public static Map<String, Especialidad> getMapEspecialidades() {
-		return espRepo;
-	}
-
-	// ***** Operaciones CRUD de Especialidades (esp) *****
+	// ************** Operaciones CRUD de Especialidades(esp) **************
 	
 	@DeleteMapping("/esp/{idEsp}")
 	public ResponseEntity<Object> delete(@PathVariable("idEsp") String id) {
@@ -109,7 +105,7 @@ public class EspecialidadServiceController {
 	}
 
 	
-	// ***** Operaciones CRUD de Doctores *****
+	// ************** Operaciones CRUD de Doctores **************
 	
 	
 	@DeleteMapping("/esp/{idEsp}/doctores/{id}")
