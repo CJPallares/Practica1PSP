@@ -37,7 +37,7 @@ public class Doctor {
 	public Especialidad getEspecialidad() {
 		return especialidad;
 	}
-	public void setDepartamento(Especialidad especialidad) {
+	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
 	}
 	
