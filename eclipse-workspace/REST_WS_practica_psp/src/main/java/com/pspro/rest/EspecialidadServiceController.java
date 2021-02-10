@@ -72,7 +72,7 @@ public class EspecialidadServiceController {
 	}
 	
 
-	// ************** Operaciones CRUD de Especialidades(esp) **************
+	// ************** Operaciones CRUD de Especialidades(esp) | Recursos de nivel 1 **************
 	
 	@DeleteMapping("/esp/{idEsp}")
 	public ResponseEntity<Object> delete(@PathVariable("idEsp") String id) {
@@ -105,7 +105,7 @@ public class EspecialidadServiceController {
 	}
 
 	
-	// ************** Operaciones CRUD de Doctores **************
+	// ************** Operaciones CRUD de Doctores | Recursos de nivel 2 **************
 	
 	
 	@DeleteMapping("/esp/{idEsp}/doctores/{id}")
