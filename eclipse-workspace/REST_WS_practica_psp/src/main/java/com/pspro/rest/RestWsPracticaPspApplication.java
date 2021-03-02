@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Clase principal para ejecutar la aplicación y levantar el servicio web.
  * @author: Carlos Jiménez
- * @version: 10/02/2021/B
+ * @version: 01/03/2021/C
  *
  */
 @SpringBootApplication

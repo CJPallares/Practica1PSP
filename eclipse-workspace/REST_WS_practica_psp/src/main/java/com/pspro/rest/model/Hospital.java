@@ -2,7 +2,7 @@ package com.pspro.rest.model;
 /**
  * Clase que representa a una Tabla de una Base de Datos. Forma parte del modelo de datos necesario para recibir las peticiones de clientes.
  * @author: Carlos Jiménez
- * @version: 10/02/2021/B
+ * @version: 01/03/2021/C
  *
  */
 public class Hospital {

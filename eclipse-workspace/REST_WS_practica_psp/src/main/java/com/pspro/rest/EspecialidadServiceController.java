@@ -20,7 +20,7 @@ import com.pspro.rest.model.Especialidad;
  * contener la anotación @RestController para que Spring detecte que es el controlador y cualquier petición de tipo REST
  * que llegue será procesada por esta clase.
  * @author: Carlos Jiménez
- * @version: 10/02/2021/B
+ * @version: 01/03/2021/C
  *
  */
 @RestController
@@ -74,55 +74,77 @@ public class EspecialidadServiceController {
 
 	// ************** Operaciones CRUD de Especialidades(esp) | Recursos de nivel 1 **************
 	
+	// Método que borra la Especialidad introducida:
 	@DeleteMapping("/esp/{idEsp}")
 	public ResponseEntity<Object> delete(@PathVariable("idEsp") String id) {
-		espRepo.remove(id);
-		return new ResponseEntity<>("Doctor se ha eliminado con éxito", HttpStatus.OK);
+		if(espRepo.get(id) != null) {
+			espRepo.remove(id);
+			return new ResponseEntity<>("La Especialidad se ha eliminado con éxito", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("La Especialidad indicada no existe", HttpStatus.OK);
+		}
 	}
-
+	
+	// Actualiza la Especialidad introducida con los diferentes campos deseados:
 	@PutMapping("/esp/{idEsp}")
 	public ResponseEntity<Object> updateEspecialidad(@PathVariable("idEsp") String id, @RequestBody Especialidad esp) {
-		espRepo.remove(id);
-		esp.setId(id);
-		espRepo.put(id, esp);
-		return new ResponseEntity<>("Doctor se ha actualizado con éxito", HttpStatus.OK);
+		if(espRepo.get(id) != null) {
+			espRepo.remove(id);
+			esp.setId(id);
+			espRepo.put(id, esp);
+			return new ResponseEntity<>("La Especialidad se ha actualizado con éxito", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("La Especialidad indicada no existe", HttpStatus.OK);
+		}	
 	}
 
+	// Crea la Especialidad introducida con los diferentes campos deseados:
 	@PostMapping("/esp")
 	public ResponseEntity<Object> createEspecialidad(@RequestBody Especialidad esp) {
-		espRepo.put(esp.getId(), esp);
-		return new ResponseEntity<>("Doctor se ha creado con éxito", HttpStatus.CREATED);
+		if (esp.getId() != null && espRepo.get(esp.getId()) == null) {
+			espRepo.put(esp.getId(), esp);
+			return new ResponseEntity<>("La Especialidad se ha creado con éxito", HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>("La Especialidad no se pudo crear", HttpStatus.CREATED);
+		}
 	}
-
+	
+	// Muestra todas las especialidades:
 	@GetMapping("/esp")
 	public ResponseEntity<Object> getEspecialidades() {
 		return new ResponseEntity<>(espRepo.values(), HttpStatus.OK);
 	}
 
+	// Muestra la especialidad introducida:
 	@GetMapping("/esp/{idEsp}")
 	public ResponseEntity<Object> getEspecialidadById(@PathVariable("idEsp") String id) {
-		return new ResponseEntity<>(espRepo.get(id), HttpStatus.OK);
+		if (espRepo.get(id) != null) {
+			return new ResponseEntity<>(espRepo.get(id), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("La Especialidad indicada no existe", HttpStatus.OK);
+		}
 	}
 
 	
 	// ************** Operaciones CRUD de Doctores | Recursos de nivel 2 **************
 	
-	
+	// Borra a un doctor si este pertenece a la especialidad introducida:
 	@DeleteMapping("/esp/{idEsp}/doctores/{id}")
 	public ResponseEntity<Object> deleteDoctor(@PathVariable("idEsp") String idEsp, @PathVariable("id") String id) {
-		if (doctorRepo.get(id).getEspecialidad().getId().equals(idEsp)) {
+		if (doctorRepo.get(id).getEspecialidad().getId().equals(idEsp) || doctorRepo.get(id) == null) {
 			doctorRepo.remove(id);
-			return new ResponseEntity<>("Doctor se ha eliminado con éxito", HttpStatus.OK);
+			return new ResponseEntity<>("El Doctor se ha eliminado con éxito", HttpStatus.OK);
 		} else
 			return new ResponseEntity<>("El Doctor no se ha eliminado porque no corresponde con esa especialidad",
 					HttpStatus.OK);
 
 	}
 
+	// Actualiza a un doctor si este pertenece a la especialidad introducida:
 	@PutMapping("/esp/{idEsp}/doctores/{id}")
 	public ResponseEntity<Object> updateDoctor(@PathVariable("idEsp") String idEsp, @PathVariable("id") String id,
 			@RequestBody Doctor doctor) {
-		if (doctorRepo.get(id).getEspecialidad().getId().equals(idEsp)) {
+		if (doctorRepo.get(id).getEspecialidad().getId().equals(idEsp) || doctorRepo.get(id) == null) {
 			doctorRepo.remove(id);
 			doctor.setId(id);
 			doctorRepo.put(id, doctor);
@@ -132,14 +154,20 @@ public class EspecialidadServiceController {
 					HttpStatus.OK);
 	}
 
+	// Crea a un doctor que va a pertenecer a la especialidad introducida:
 	@PostMapping("/esp/{idEsp}/doctores")
 	public ResponseEntity<Object> createDoctor(@PathVariable("idEsp") String idEsp, @RequestBody Doctor doctor) {
-		doctor.setEspecialidad(espRepo.get(idEsp));
-		doctorRepo.put(doctor.getId(), doctor);
-		return new ResponseEntity<>("Doctor se ha creado con éxito", HttpStatus.CREATED);
+		if (doctor.getId() != null && doctorRepo.get(doctor.getId()) == null) {
+			doctor.setEspecialidad(espRepo.get(idEsp));
+			doctorRepo.put(doctor.getId(), doctor);
+			return new ResponseEntity<>("Doctor se ha creado con éxito", HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>("Doctor no pudo crearse", HttpStatus.CREATED);
+		}
+		
 	}
 
-	
+	// Muestra a todos los doctores de la especialidad introducida:
 	@GetMapping("/esp/{idEsp}/doctores")
 	public ResponseEntity<Object> getDoctores(@PathVariable("idEsp") String idEsp) {
 		Map<String, Doctor> doctoresEsp = new HashMap<>();
@@ -151,9 +179,10 @@ public class EspecialidadServiceController {
 		return new ResponseEntity<>(doctoresEsp.values(), HttpStatus.OK);
 	}
 	
+	// Muestra al doctor indicado de la especialidad introducida:
 	@GetMapping("/esp/{idEsp}/doctores/{id}")
 	public ResponseEntity<Object> getDoctorById(@PathVariable("idEsp") String idEsp, @PathVariable("id") String id) {
-		if (doctorRepo.get(id).getEspecialidad().getId().equals(idEsp)) {
+		if (doctorRepo.get(id).getEspecialidad().getId().equals(idEsp) && doctorRepo.get(id) != null) {
 			return new ResponseEntity<>(doctorRepo.get(id), HttpStatus.OK);
 		} else
 			return new ResponseEntity<>("El Doctor no se puede mostrar porque no ha sido encontrado en la especialidad indicada",
