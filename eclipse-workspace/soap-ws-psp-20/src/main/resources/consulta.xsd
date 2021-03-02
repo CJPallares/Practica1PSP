@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:tns="http://www.pspro.com/xml/consulta"
 	targetNamespace="http://www.pspro.com/xml/consulta"
 	elementFormDefault="qualified">
 	
-	<!-- Peticion del cliente del nombre de la especialidad médica en el que está interesado.
-	 El servidor devuelve como respuesta un objeto del tipo Especialidad -->
+	<!-- Peticion del cliente de detalles de la especialidad médica en el que está interesado.
+	 El servidor devuelve como respuesta un objeto de tipo Especialidad -->
 	<xs:element name="EspecialidadDetailsRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -21,7 +23,7 @@
 		</xs:complexType>
 	</xs:element>
 	
-	<!-- Peticion del cliente del nombre del doctor. 
+	<!-- Peticion del cliente de datos del médico mediante el nombre del doctor. 
 	 El servidor devuelve como respuesta un objeto de tipo Doctor con todos los datos del mismo -->
 	<xs:element name="DoctorDetailsRequest">
 		<xs:complexType>
@@ -39,7 +41,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Petición del cliente del nombre del doctor.
+	<!-- Petición del cliente del número de colegiado mediante el nombre del doctor.
 	 El servidor devuelve como respuesta el número de colegiado del doctor. -->
 	<xs:element name="DoctorColegiadoRequest">
 		<xs:complexType>

@@ -31,6 +31,7 @@ public class DoctorEndpoint
     public DoctorEndpoint(DoctorRepository DoctorRepository) {
         this.DoctorRepository = DoctorRepository;
     }
+    
     // Método que recibe la información de una petición de tipo DoctorDetailsRequest y devolverá como respuesta
     // la información del objeto Doctor cuyo nombre coincida con el que se encuentre en el Map.
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "DoctorDetailsRequest")
@@ -38,9 +39,9 @@ public class DoctorEndpoint
     public DoctorDetailsResponse getDoctor(@RequestPayload DoctorDetailsRequest request) {
     	DoctorDetailsResponse response = new DoctorDetailsResponse();
         response.setDoctor(DoctorRepository.findDoctor(request.getFirstname()));
- 
         return response;
     }
+    
     // Método que recibe la información de una petición de tipo DoctorColegiadoRequest y devolverá como respuesta
     // el número de colegiado del doctor cuyo nombre coincida con el que se encuentre en el Map.
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "DoctorColegiadoRequest")
@@ -48,7 +49,6 @@ public class DoctorEndpoint
     public DoctorColegiadoResponse getDoctor(@RequestPayload DoctorColegiadoRequest request) {
     	DoctorColegiadoResponse response = new DoctorColegiadoResponse();
         response.setNColegiado(DoctorRepository.findDoctor(request.getFirstname()).getNColegiado());
- 
         return response;
     }
     

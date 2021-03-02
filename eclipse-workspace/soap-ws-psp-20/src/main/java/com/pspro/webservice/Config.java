@@ -24,6 +24,7 @@ public class Config extends WsConfigurerAdapter
         servlet.setTransformWsdlLocations(true);
         return new ServletRegistrationBean(servlet, "/service/*");
     }
+    
     //Nombre del contrato (nombre con el que se publica) nuestro servicio web, en el que se especifican todas las operaciones que se pueden hacer en el servicio web.
     @Bean(name = "doctorDetailsWsdl")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) 
