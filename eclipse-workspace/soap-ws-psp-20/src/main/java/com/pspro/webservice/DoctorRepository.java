@@ -20,13 +20,13 @@ public class DoctorRepository {
     // Funciona como si fueran consultas a la base de datos.
     @PostConstruct
     public void initData() {
-         
+        EspecialidadRepository eRepo = new EspecialidadRepository(); 
     	Doctor doctor = new Doctor();
         doctor.setFirstname("Antonio");
         doctor.setLastname("Amado");
         doctor.setEdad(54);
         doctor.setNColegiado("302269515");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Neurología"));
+        doctor.setEspecialidad(eRepo.getEspecialidades().get("Neurología"));
         
         doctores.put(doctor.getFirstname(), doctor);
          
@@ -35,7 +35,7 @@ public class DoctorRepository {
         doctor.setLastname("Encinas");
         doctor.setEdad(45);
         doctor.setNColegiado("302269586");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Cardiología"));
+        doctor.setEspecialidad(eRepo.getEspecialidades().get("Cardiología"));
 
         doctores.put(doctor.getFirstname(), doctor);
          
@@ -44,7 +44,7 @@ public class DoctorRepository {
         doctor.setLastname("Colmado");
         doctor.setEdad(40);
         doctor.setNColegiado("302269677");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Psiquiatría"));
+        doctor.setEspecialidad(eRepo.getEspecialidades().get("Psiquiatría"));
         
         doctores.put(doctor.getFirstname(), doctor);
          
@@ -53,7 +53,7 @@ public class DoctorRepository {
         doctor.setLastname("Hielo");
         doctor.setEdad(56);
         doctor.setNColegiado("302269769");
-        doctor.setEspecialidad(EspecialidadRepository.getEspecialidades().get("Traumatología"));
+        doctor.setEspecialidad(eRepo.getEspecialidades().get("Traumatología"));
         
         doctores.put(doctor.getFirstname(), doctor);
     }

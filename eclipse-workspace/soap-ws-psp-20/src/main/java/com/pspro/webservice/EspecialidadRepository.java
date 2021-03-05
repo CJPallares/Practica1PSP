@@ -17,6 +17,11 @@ import com.pspro.xml.consulta.Especialidad;
 @Component
 public class EspecialidadRepository {
     private static final Map<String, Especialidad> especialidades = new HashMap<>();
+    
+    public EspecialidadRepository(){
+    	initData();
+    }
+    
     // Funciona como si fueran consultas a la base de datos.
     @PostConstruct
     public void initData() { 
@@ -52,7 +57,7 @@ public class EspecialidadRepository {
     }
     
     // Método para conectar con DoctorRepository el Map y conseguir visualizar la especialidad del doctor.
-    public static Map<String, Especialidad> getEspecialidades() {
+    public Map<String, Especialidad> getEspecialidades() {
 		return especialidades;
 	}
 }
