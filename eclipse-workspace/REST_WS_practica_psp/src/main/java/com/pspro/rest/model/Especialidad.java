@@ -1,4 +1,7 @@
 package com.pspro.rest.model;
+
+import java.util.HashMap;
+
 /**
  * Clase que representa a una Tabla de una Base de Datos. Forma parte del modelo de datos necesario para recibir las peticiones de clientes.
  * @author: Carlos Jiménez
@@ -9,6 +12,12 @@ public class Especialidad {
 	private String id;
 	private String nombreEsp;
 	private int nConsulta;
+	HashMap<String, Doctor> listaDoctores;
+	
+
+	public Especialidad() {
+		this.listaDoctores = new HashMap<>();
+	}
 
 	public String getId() {
 		return id;
@@ -33,5 +42,20 @@ public class Especialidad {
 	public void setNConsulta(int nConsulta) {
 		this.nConsulta = nConsulta;
 	}
+	
+	public HashMap<String, Doctor> getListaDoctores() {
+		return listaDoctores;
+	}
 
+	public void setListaDoctores(HashMap<String, Doctor> listaDoctores) {
+		this.listaDoctores = listaDoctores;
+	}
+	
+	public void addDoctor(Doctor doctor) {
+		this.listaDoctores.put(doctor.getId(), doctor);
+	}
+	
+	public void eliminaDoctor(String id) {
+		this.listaDoctores.remove(id);
+	}
 }
