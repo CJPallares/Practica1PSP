@@ -145,7 +145,7 @@ public class EspecialidadServiceController {
 			espRepo.get(idEsp).eliminaDoctor(id);
 			return new ResponseEntity<>("El Doctor se ha eliminado con éxito", HttpStatus.OK);
 		} else
-			return new ResponseEntity<>("El Doctor no se ha eliminado porque no corresponde con esa especialidad", HttpStatus.OK);
+			return new ResponseEntity<>("El Doctor no se ha eliminado porque no corresponde con esa especialidad o no existe", HttpStatus.OK);
 
 	}
 
