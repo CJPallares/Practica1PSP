@@ -11,6 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.pspro.xml.consulta.Doctor;
 import com.pspro.xml.consulta.DoctorColegiadoRequest;
 import com.pspro.xml.consulta.DoctorColegiadoResponse;
 import com.pspro.xml.consulta.DoctorDetailsRequest;
@@ -31,9 +32,13 @@ public class DoctorEndpoint
     public DoctorEndpoint(DoctorRepository DoctorRepository) {
         this.DoctorRepository = DoctorRepository;
     }
+    /**
+     * Método que recibe la información de una petición de tipo DoctorDetailsRequest y devolverá como respuesta 
+     * la información del objeto Doctor cuyo nombre coincida con el que se encuentre en el Map.
+     * @param request
+     * @return response
+     */
     
-    // Método que recibe la información de una petición de tipo DoctorDetailsRequest y devolverá como respuesta
-    // la información del objeto Doctor cuyo nombre coincida con el que se encuentre en el Map.
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "DoctorDetailsRequest")
     @ResponsePayload
     public DoctorDetailsResponse getDoctor(@RequestPayload DoctorDetailsRequest request) {
@@ -42,14 +47,23 @@ public class DoctorEndpoint
         return response;
     }
     
-    // Método que recibe la información de una petición de tipo DoctorColegiadoRequest y devolverá como respuesta
-    // el número de colegiado del doctor cuyo nombre coincida con el que se encuentre en el Map.
+    /** 
+     * Método que recibe la información de una petición de tipo DoctorColegiadoRequest y devolverá como
+     * respuesta el número de colegiado del doctor cuyo nombre coincida con el que se encuentre en el Map.
+     * @param request
+     * @return response
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "DoctorColegiadoRequest")
     @ResponsePayload
     public DoctorColegiadoResponse getDoctor(@RequestPayload DoctorColegiadoRequest request) {
     	DoctorColegiadoResponse response = new DoctorColegiadoResponse();
-        response.setNColegiado(DoctorRepository.findDoctor(request.getFirstname()).getNColegiado());
-        return response;
+		Doctor doc = DoctorRepository.findDoctor(request.getFirstname());
+		if (doc==null) {
+			response.setNColegiado("No existe ese Doctor");
+			return response;
+		} else {
+			response.setNColegiado(DoctorRepository.findDoctor(request.getFirstname()).getNColegiado());
+			return response;
+		}
     }
-    
 }

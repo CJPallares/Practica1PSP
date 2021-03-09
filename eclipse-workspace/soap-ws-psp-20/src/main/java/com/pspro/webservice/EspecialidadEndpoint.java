@@ -27,14 +27,18 @@ public class EspecialidadEndpoint
     public EspecialidadEndpoint(EspecialidadRepository EspecialidadRepository) {
         this.EspecialidadRepository = EspecialidadRepository;
     }
-    // Método que recibe la información de una petición de tipo EspecialidadDetailsRequest y devolverá como respuesta
-    // la información del objeto Especialidad cuyo nombre coincida con el que se encuentre en el Map.
+    
+    /**
+     * Método que recibe la información de una petición de tipo EspecialidadDetailsRequest y devolverá como respuesta
+     * la información del objeto Especialidad cuyo nombre coincida con el que se encuentre en el Map.
+     * @param request
+     * @return response
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "EspecialidadDetailsRequest")
     @ResponsePayload
     public EspecialidadDetailsResponse getEspecialidad(@RequestPayload EspecialidadDetailsRequest request) {
     	EspecialidadDetailsResponse response = new EspecialidadDetailsResponse();
         response.setEspecialidad(EspecialidadRepository.findEspecialidad(request.getNombreEspecialidad()));
- 
         return response;
     }
 }

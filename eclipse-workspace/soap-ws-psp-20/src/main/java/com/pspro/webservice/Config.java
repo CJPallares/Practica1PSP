@@ -1,5 +1,11 @@
 package com.pspro.webservice;
-
+/**
+ * Clase de configuración. Se incluye el nombre del contrato (nombre con el que se publica) nuestro servicio web,
+ * en el que se especifican todas las operaciones que se pueden hacer en el servicio web.
+ * @author: Carlos Jiménez
+ * @version: 5/02/2021/C
+ *
+ */
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
